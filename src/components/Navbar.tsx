@@ -41,7 +41,7 @@ export default function Navbar() {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
           <a href="#" className="text-2xl font-bold text-white">
-            Portfolio
+            Dikirmd
           </a>
 
           {/* Desktop Menu */}
