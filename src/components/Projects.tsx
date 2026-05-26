@@ -45,6 +45,14 @@ export default function Projects() {
       demoUrl: 'https://dikirmdn.web.id',
       sourceUrl: '', // Kosongkan jika tidak ada source code
     },
+    {
+      title: 'DSI Recruitment Portal',
+      description: 'A professional recruitment platform for DSI that enables job seekers to explore career opportunities, submit applications online, and streamline the hiring process efficiently.',
+      tech: ['Laravel', 'MySQL', 'TailwindCSS', 'Alpinejs'],
+      image: '/karir.png',
+      demoUrl: 'https://karir.dsi.co.id',
+      sourceUrl: '', // Kosongkan jika tidak ada source code
+    },
   ];
 
   return (
@@ -93,7 +101,7 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     className="rounded-full border border-gray-700 px-6 py-2 text-sm text-white transition-all hover:border-gray-500 hover:bg-gray-900"
                   >
-                    View Demo
+                    View Website
                   </a>
                   {project.sourceUrl && (
                     <a

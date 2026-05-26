@@ -171,7 +171,7 @@ export default function Music() {
             </h2>
           </div>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Music that inspires me while coding and creating. Here are my current top picks.
+            Music that inspires me while vibe coding and creating. Here are my current top picks.
           </p>
         </div>
 
