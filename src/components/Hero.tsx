@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
 export default function Hero() {
@@ -8,6 +8,8 @@ export default function Hero() {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
+  const imageContainerRef = useRef<HTMLDivElement>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -42,10 +44,34 @@ export default function Hero() {
         ease: 'power3.out',
         delay: 0.5,
       });
+
+      // Floating animation
+      gsap.to(imageRef.current, {
+        y: -20,
+        duration: 2.5,
+        ease: 'power1.inOut',
+        repeat: -1,
+        yoyo: true,
+      });
     });
 
     return () => ctx.revert();
   }, []);
+
+  // Mouse tracking for parallax effect
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!imageContainerRef.current) return;
+    
+    const rect = imageContainerRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
+    const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
+    
+    setMousePosition({ x: x * 30, y: y * 30 });
+  };
+
+  const handleMouseLeave = () => {
+    setMousePosition({ x: 0, y: 0 });
+  };
 
   return (
     <section className="relative w-full overflow-hidden">
@@ -90,13 +116,48 @@ export default function Hero() {
         </div>
 
         {/* Profile Image - Mobile */}
-        <div ref={imageRef} className="relative mx-auto w-64 h-64">
-          <div className="neo-raised rounded-full p-4 w-full h-full overflow-hidden">
-            <img
-              src="/profile.jpeg"
-              alt="Diki Ramadan"
-              className="w-full h-full object-cover rounded-full"
-            />
+        <div 
+          ref={imageContainerRef}
+          className="relative mx-auto w-64 h-64"
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div 
+            ref={imageRef}
+            className="relative w-full h-full group cursor-pointer"
+            style={{
+              transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
+              transition: 'transform 0.3s ease-out',
+            }}
+          >
+            {/* Animated rings */}
+            <div className="absolute inset-0 rounded-full animate-ping-slow opacity-20 neo-raised"></div>
+            <div className="absolute inset-0 rounded-full animate-pulse-slow opacity-30 neo-flat"></div>
+            
+            {/* Main image container */}
+            <div className="relative neo-raised rounded-full p-4 w-full h-full overflow-hidden transition-all duration-500 group-hover:scale-110 group-hover:neo-hover">
+              <div className="relative w-full h-full rounded-full overflow-hidden">
+                <img
+                  src="/profile.jpeg"
+                  alt="Diki Ramadan"
+                  className="w-full h-full object-cover rounded-full transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3"
+                />
+                {/* Shine effect on hover */}
+                <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 60%)',
+                  }}
+                ></div>
+              </div>
+            </div>
+
+            {/* Decorative orbiting dots */}
+            <div className="absolute inset-0 animate-spin-slow">
+              <div className="absolute top-0 left-1/2 w-3 h-3 -ml-1.5 -mt-1.5 neo-raised rounded-full bg-gray-300"></div>
+            </div>
+            <div className="absolute inset-0 animate-spin-reverse-slow">
+              <div className="absolute bottom-0 left-1/2 w-3 h-3 -ml-1.5 -mb-1.5 neo-raised rounded-full bg-gray-400"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -143,14 +204,51 @@ export default function Hero() {
         </div>
 
         {/* Profile Image - Desktop */}
-        <div ref={imageRef} className="relative flex justify-center">
-          <div className="neo-raised rounded-full p-6 w-96 h-96">
-            <div className="neo-pressed rounded-full w-full h-full overflow-hidden">
-              <img
-                src="/profile.jpeg"
-                alt="Diki Ramadan"
-                className="w-full h-full object-cover rounded-full"
-              />
+        <div 
+          ref={imageContainerRef}
+          className="relative flex justify-center"
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div 
+            ref={imageRef}
+            className="relative w-96 h-96 group cursor-pointer"
+            style={{
+              transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
+              transition: 'transform 0.3s ease-out',
+            }}
+          >
+            {/* Animated outer rings */}
+            <div className="absolute -inset-4 rounded-full animate-ping-slow opacity-20 neo-raised"></div>
+            <div className="absolute -inset-2 rounded-full animate-pulse-slow opacity-30 neo-flat"></div>
+            
+            {/* Main image container */}
+            <div className="relative neo-raised rounded-full p-6 w-full h-full transition-all duration-500 group-hover:scale-105 group-hover:neo-hover">
+              <div className="neo-pressed rounded-full w-full h-full overflow-hidden">
+                <div className="relative w-full h-full rounded-full overflow-hidden">
+                  <img
+                    src="/profile.jpeg"
+                    alt="Diki Ramadan"
+                    className="w-full h-full object-cover rounded-full transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2"
+                  />
+                  {/* Shine effect on hover */}
+                  <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    style={{
+                      background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 60%)',
+                    }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Decorative orbiting dots */}
+            <div className="absolute inset-0 animate-spin-slow">
+              <div className="absolute top-0 left-1/2 w-4 h-4 -ml-2 -mt-2 neo-raised rounded-full bg-gray-300"></div>
+              <div className="absolute top-1/4 right-0 w-3 h-3 -mr-1.5 neo-raised rounded-full bg-gray-200"></div>
+            </div>
+            <div className="absolute inset-0 animate-spin-reverse-slow">
+              <div className="absolute bottom-0 left-1/2 w-4 h-4 -ml-2 -mb-2 neo-raised rounded-full bg-gray-400"></div>
+              <div className="absolute bottom-1/4 left-0 w-3 h-3 -ml-1.5 neo-raised rounded-full bg-gray-300"></div>
             </div>
           </div>
         </div>
