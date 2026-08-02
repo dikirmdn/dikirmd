@@ -42,7 +42,7 @@ export default function Projects() {
       description: 'Online employee assessment platform with interactive tests.',
       tech: ['Laravel', 'MySQL', 'TailwindCSS', 'Alpinejs'],
       image: '/iqtest.png',
-      demoUrl: 'https://dikirmdn.web.id',
+      demoUrl: 'https://demo.dikirmd.tech',
       sourceUrl: '', 
     },
     {

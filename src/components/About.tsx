@@ -40,42 +40,59 @@ export default function About() {
   return (
     <section ref={sectionRef} id="about" className="relative min-h-screen px-6 py-32">
       <div className="mx-auto max-w-7xl relative z-10">
-        <h2 className="mb-16 text-center text-5xl font-bold text-white md:text-6xl">
-          About <span className="text-gray-400">Me</span>
+        <h2 className="mb-16 text-center text-5xl font-bold text-gray-800 dark:text-gray-100 md:text-6xl">
+          About <span className="text-gray-600 dark:text-gray-400">Me</span>
         </h2>
 
-        <div className="grid gap-6 grid-cols-2 md:grid-cols-4 mb-16">
-          {galleryImages.map((image, index) => (
-            <div
-              key={index}
-              ref={(el) => {
-                if (el) cardsRef.current[index] = el;
-              }}
-              className="glass glow-hover group rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 aspect-square relative"
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+       <div className="grid grid-cols-4 grid-rows-2 gap-4 md:grid-cols-4 md:grid-rows-1 mb-16">
+          {galleryImages.map((image, index) => {
+            const mobileLayout = [
+              "col-span-2 row-span-2", // besar
+              "col-span-2 row-span-1", // kecil
+              "col-span-1 row-span-1", // kecil
+              "col-span-1 row-span-1", // kecil
+            ];
+
+            return (
+              <div
+                key={index}
+                ref={(el) => {
+                  if (el) cardsRef.current[index] = el;
+                }}
+                className={`
+                  neo-raised neo-hover group rounded-3xl overflow-hidden relative
+                  ${mobileLayout[index]}
+                  md:col-span-1 md:row-span-1 md:aspect-square
+                `}
+              >
+                <div className="neo-pressed w-full h-full overflow-hidden">
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <p className="text-white text-center font-medium px-4">{image.description}</p>
-              </div>
-            </div>
-          ))}
         </div>
+
+        <div className="absolute inset-0 bg-gray-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <p className="text-white text-center font-medium px-4">
+            {image.description}
+          </p>
+        </div>
+      </div>
+    );
+  })}
+</div>
 
         <div
           ref={(el) => {
             if (el) cardsRef.current[4] = el;
           }}
-          className="glass mt-16 rounded-3xl p-12"
+          className="neo-raised rounded-3xl p-12"
         >
-          <p className="text-lg leading-relaxed text-gray-300">
-           I'm a final-semester university student and freelance web developer passionate about building clean, 
-           responsive, and user-friendly web applications. I specialize in modern web technologies and enjoy turning 
-           ideas into functional digital experiences with a focus on performance and design.
-
+          <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+            I'm a fresh graduate with a GPA of 3.83 and a freelance web developer passionate about building clean, responsive, 
+            and user-friendly web applications. I enjoy transforming ideas into functional digital experiences with a strong focus on
+            performance, usability, and thoughtful design.
           </p>
         </div>
       </div>
