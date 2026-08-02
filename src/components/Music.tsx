@@ -93,7 +93,7 @@ export default function Music() {
       title: 'Her (all versions)',
       artist: 'Jvke',
       year: '2025',
-      audioUrl: '/music/her.mp3', // Letakkan file audio di folder public/music/
+      audioUrl: '/music/her.mp3',
     },
     {
       title: 'A Thousand Years',
@@ -164,13 +164,13 @@ export default function Music() {
     <section id="music" className="relative min-h-screen px-6 py-32">
       <div className="mx-auto max-w-5xl relative z-10">
         <div ref={contentRef} className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 mb-6">
+          <div className="inline-flex items-center gap-3 mb-6 text-gray-800">
             <MusicIcon />
-            <h2 className="text-5xl font-bold text-white md:text-6xl">
-              My Fav <span className="text-gray-400">Music</span>
+            <h2 className="text-5xl font-bold text-gray-800 md:text-6xl">
+              My Fav <span className="text-gray-600">Music</span>
             </h2>
           </div>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Music that inspires me while vibe coding and creating. Here are my current top picks.
           </p>
         </div>
@@ -179,7 +179,7 @@ export default function Music() {
           {favoriteSongs.map((song, index) => (
             <div
               key={index}
-              className="music-card glass rounded-2xl p-6 transition-all duration-300 group"
+              className="music-card neo-raised rounded-3xl p-6 transition-all duration-300 group hover:neo-hover"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
@@ -201,24 +201,26 @@ export default function Music() {
                 {/* Play/Pause Button */}
                 <button
                   onClick={() => handlePlayPause(index)}
-                  className="flex-shrink-0 w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all duration-300 hover:scale-110"
+                  className="flex-shrink-0 w-12 h-12 rounded-2xl neo-flat flex items-center justify-center hover:neo-pressed transition-all duration-300"
                 >
-                  {currentPlaying === index ? <PauseIcon /> : <PlayIcon />}
+                  <span className="text-gray-700">
+                    {currentPlaying === index ? <PauseIcon /> : <PlayIcon />}
+                  </span>
                 </button>
 
                 {/* Song Info */}
                 <div className="flex-grow min-w-0">
-                  <h3 className="text-lg font-bold text-white mb-1 truncate">
+                  <h3 className="text-lg font-bold text-gray-800 mb-1 truncate">
                     {song.title}
                   </h3>
-                  <p className="text-gray-400 text-sm truncate">
+                  <p className="text-gray-600 text-sm truncate">
                     {song.artist} 
                   </p>
                 </div>
 
                 {/* Year */}
                 <div className="flex-shrink-0 hidden md:block">
-                  <span className="text-gray-500 text-sm font-mono">{song.year}</span>
+                  <span className="text-gray-600 text-sm font-mono">{song.year}</span>
                 </div>
               </div>
 
@@ -231,12 +233,9 @@ export default function Music() {
                     max={duration || 0}
                     value={currentTime}
                     onChange={(e) => handleSeek(index, parseFloat(e.target.value))}
-                    className="w-full h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
-                    style={{
-                      background: `linear-gradient(to right, #fff ${(currentTime / duration) * 100}%, #374151 ${(currentTime / duration) * 100}%)`,
-                    }}
+                    className="w-full slider"
                   />
-                  <div className="flex justify-between text-xs text-gray-500">
+                  <div className="flex justify-between text-xs text-gray-600">
                     <span>{formatTime(currentTime)}</span>
                     <span>{formatTime(duration)}</span>
                   </div>
@@ -248,8 +247,8 @@ export default function Music() {
 
         {/* Volume Control */}
         {currentPlaying !== null && (
-          <div className="glass rounded-2xl p-6 mt-8">
-            <div className="flex items-center gap-4">
+          <div className="neo-raised rounded-3xl p-6 mt-8">
+            <div className="flex items-center gap-4 text-gray-700">
               <VolumeIcon />
               <input
                 type="range"
@@ -258,20 +257,17 @@ export default function Music() {
                 step="0.01"
                 value={volume}
                 onChange={(e) => handleVolumeChange(parseFloat(e.target.value))}
-                className="flex-grow h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
-                style={{
-                  background: `linear-gradient(to right, #fff ${volume * 100}%, #374151 ${volume * 100}%)`,
-                }}
+                className="flex-grow slider"
               />
-              <span className="text-sm text-gray-400 w-12 text-right">
+              <span className="text-sm text-gray-600 w-12 text-right">
                 {Math.round(volume * 100)}%
               </span>
             </div>
           </div>
         )}
 
-        <div className="glass rounded-2xl p-8 text-center mt-8">
-          <p className="text-gray-400 text-sm">
+        <div className="neo-raised rounded-3xl p-8 text-center mt-8">
+          <p className="text-gray-600 text-sm">
             Want to share your favorite music? Let's connect and exchange playlists!
           </p>
         </div>

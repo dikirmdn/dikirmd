@@ -22,25 +22,17 @@ export default function Navbar() {
     { href: '#projects', label: 'Projects' },
     { href: '#music', label: 'Music' },
     { href: '#contact', label: 'Contact' },
-
   ];
 
   return (
-    <nav className="fixed left-0 right-0 top-0 z-50 max-w-7xl mx-auto px-6">
+    <nav className="fixed left-0 right-0 top-0 z-50 max-w-7xl mt-2 mx-auto px-6">
       <div
-        className={`rounded-full transition-all duration-300 will-change-transform ${
-          scrolled ? 'glass py-4' : 'py-6'
+        className={`rounded-full transition-all duration-300 ${
+          scrolled ? 'neo-raised py-4' : 'py-6'
         }`}
-        style={{
-          background: scrolled 
-            ? 'rgba(20, 20, 20, 0.4)' 
-            : 'rgba(20, 20, 20, 0)',
-          backdropFilter: scrolled ? 'blur(20px)' : 'blur(0px)',
-          border: scrolled ? '1px solid rgba(255, 255, 255, 0.05)' : '1px solid transparent',
-        }}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
-          <a href="#" className="text-2xl font-bold text-white">
+          <a href="#" className="text-2xl font-bold text-gray-800">
             Dikirmd
           </a>
 
@@ -50,7 +42,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-gray-300 transition-colors hover:text-white"
+                className="text-sm text-gray-700 transition-colors hover:text-gray-900 font-medium"
               >
                 {link.label}
               </a>
@@ -60,7 +52,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-2xl text-white md:hidden"
+            className="neo-flat p-3 rounded-full text-xl text-gray-800 md:hidden transition-all duration-300"
             aria-label="Toggle menu"
           >
             {isOpen ? <FaTimes /> : <FaBars />}
@@ -70,14 +62,14 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="glass mt-4 rounded-2xl md:hidden">
+        <div className="neo-raised mt-4 rounded-2xl md:hidden">
           <div className="flex flex-col gap-4 px-6 py-6">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="text-gray-300 transition-colors hover:text-white"
+                className="text-gray-700 font-medium transition-colors hover:text-gray-900"
               >
                 {link.label}
               </a>
