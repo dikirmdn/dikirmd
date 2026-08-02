@@ -43,7 +43,7 @@ export default function Projects() {
       tech: ['Laravel', 'MySQL', 'TailwindCSS', 'Alpinejs'],
       image: '/iqtest.png',
       demoUrl: 'https://dikirmdn.web.id',
-      sourceUrl: '', // Kosongkan jika tidak ada source code
+      sourceUrl: '', 
     },
     {
       title: 'DSI Recruitment Portal',
@@ -51,7 +51,7 @@ export default function Projects() {
       tech: ['Laravel', 'MySQL', 'TailwindCSS', 'Alpinejs'],
       image: '/karir.png',
       demoUrl: 'https://karir.dsi.co.id',
-      sourceUrl: '', // Kosongkan jika tidak ada source code
+      sourceUrl: '', 
     },
   ];
 
