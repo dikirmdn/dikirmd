@@ -43,7 +43,7 @@ export default function Projects() {
       tech: ['Laravel', 'MySQL', 'TailwindCSS', 'Alpinejs'],
       image: '/iqtest.png',
       demoUrl: 'https://demo.dikirmd.tech',
-      sourceUrl: '', 
+      sourceUrl: '',
     },
     {
       title: 'DSI Recruitment Portal',
@@ -51,15 +51,15 @@ export default function Projects() {
       tech: ['Laravel', 'MySQL', 'TailwindCSS', 'Alpinejs'],
       image: '/karir.png',
       demoUrl: 'https://karir.dsi.co.id',
-      sourceUrl: '', 
+      sourceUrl: '',
     },
   ];
 
   return (
     <section id="projects" className="relative min-h-screen px-6 py-32">
       <div className="mx-auto max-w-7xl relative z-10">
-        <h2 className="mb-16 text-center text-5xl font-bold text-white md:text-6xl">
-          Recent <span className="text-gray-400">Projects</span>
+        <h2 className="mb-16 text-center text-5xl font-bold text-gray-800 dark:text-gray-100 md:text-6xl">
+          Recent <span className="text-gray-600 dark:text-gray-400">Projects</span>
         </h2>
 
         <div ref={containerRef} className="grid gap-8 md:grid-cols-2">
@@ -69,9 +69,9 @@ export default function Projects() {
               ref={(el) => {
                 if (el) projectsRef.current[index] = el;
               }}
-              className="glass group overflow-hidden rounded-3xl transition-all duration-500 hover:scale-[1.02]"
+              className="neo-raised group overflow-hidden rounded-3xl transition-all duration-500 hover:neo-hover"
             >
-              <div className="relative h-64 overflow-hidden bg-black/20">
+              <div className="relative h-64 overflow-hidden neo-pressed">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -80,26 +80,26 @@ export default function Projects() {
               </div>
 
               <div className="p-8">
-                <h3 className="mb-3 text-2xl font-bold text-white">{project.title}</h3>
-                <p className="mb-4 text-gray-400">{project.description}</p>
+                <h3 className="mb-3 text-2xl font-bold text-gray-800 dark:text-gray-100">{project.title}</h3>
+                <p className="mb-4 text-gray-600 dark:text-gray-400">{project.description}</p>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="rounded-full border border-gray-700 px-3 py-1 text-xs text-gray-300"
+                      className="neo-flat rounded-full px-3 py-1 text-xs text-gray-700 dark:text-gray-300 font-medium"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-6 flex gap-4">
+                <div className="flex gap-4">
                   <a
                     href={project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-full border border-gray-700 px-6 py-2 text-sm text-white transition-all hover:border-gray-500 hover:bg-gray-900"
+                    className="neo-raised neo-hover rounded-full px-6 py-2 text-sm text-gray-800 dark:text-gray-100 font-medium transition-all"
                   >
                     View Website
                   </a>
@@ -108,7 +108,7 @@ export default function Projects() {
                       href={project.sourceUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="rounded-full bg-white px-6 py-2 text-sm text-black transition-all hover:bg-gray-200"
+                      className="neo-pressed rounded-full px-6 py-2 text-sm text-gray-800 dark:text-gray-100 font-medium transition-all"
                     >
                       Source Code
                     </a>
