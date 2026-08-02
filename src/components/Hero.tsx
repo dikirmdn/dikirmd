@@ -81,11 +81,11 @@ export default function Hero() {
         <div className="z-10 mb-12 text-center">
           <h1
             ref={titleRef}
-            className="mb-4 text-5xl font-bold leading-tight tracking-tight text-gray-800 sm:text-6xl"
+            className="mb-4 text-5xl font-bold leading-tight tracking-tight text-gray-800 dark:text-gray-100 sm:text-6xl"
           >
             Diki
             <br />
-            <span className="bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 dark:from-gray-300 dark:via-gray-400 dark:to-gray-200 bg-clip-text text-transparent">
               Ramadan's
             </span>
             <br />
@@ -94,7 +94,7 @@ export default function Hero() {
 
           <p
             ref={subtitleRef}
-            className="mb-8 text-sm leading-relaxed text-gray-600 sm:text-base"
+            className="mb-8 text-sm leading-relaxed text-gray-600 dark:text-gray-400 sm:text-base"
           >
             Crafting elegant digital experiences with modern technology.
           </p>
@@ -102,13 +102,13 @@ export default function Hero() {
           <div ref={ctaRef} className="flex flex-col gap-3">
             <a
               href="#projects"
-              className="neo-raised neo-hover rounded-full px-6 py-3 text-sm font-medium text-gray-800 transition-all duration-300"
+              className="neo-raised neo-hover rounded-full px-6 py-3 text-sm font-medium text-gray-800 dark:text-gray-100 transition-all duration-300"
             >
               View Projects
             </a>
             <a
               href="#contact"
-              className="neo-flat rounded-full px-6 py-3 text-sm font-medium text-gray-700 transition-all duration-300 hover:neo-hover"
+              className="neo-flat rounded-full px-6 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 transition-all duration-300 hover:neo-hover"
             >
               Contact Me
             </a>
@@ -168,11 +168,11 @@ export default function Hero() {
         <div className="z-10 flex flex-col justify-center">
           <h1
             ref={titleRef}
-            className="mb-6 text-7xl font-bold leading-tight tracking-tight text-gray-800 md:text-7xl"
+            className="mb-6 text-7xl font-bold leading-tight tracking-tight text-gray-800 dark:text-gray-100 md:text-7xl"
           >
             Diki
             <br />
-            <span className="bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 dark:from-gray-300 dark:via-gray-400 dark:to-gray-200 bg-clip-text text-transparent">
               Ramadan's
             </span>
             <br />
@@ -181,7 +181,7 @@ export default function Hero() {
 
           <p
             ref={subtitleRef}
-            className="mb-12 max-w-xl text-xl leading-relaxed text-gray-600"
+            className="mb-12 max-w-xl text-xl leading-relaxed text-gray-600 dark:text-gray-400"
           >
             Crafting clean and functional web experiences with modern technology. 
             Focused on building responsive and user-friendly applications.
@@ -190,13 +190,13 @@ export default function Hero() {
           <div ref={ctaRef} className="flex gap-4">
             <a
               href="#projects"
-              className="neo-raised neo-hover rounded-full px-8 py-4 text-sm font-medium text-gray-800 transition-all duration-300"
+              className="neo-raised neo-hover rounded-full px-8 py-4 text-sm font-medium text-gray-800 dark:text-gray-100 transition-all duration-300"
             >
               View Projects
             </a>
             <a
               href="#contact"
-              className="neo-flat rounded-full px-8 py-4 text-sm font-medium text-gray-700 transition-all duration-300 hover:neo-hover"
+              className="neo-flat rounded-full px-8 py-4 text-sm font-medium text-gray-700 dark:text-gray-300 transition-all duration-300 hover:neo-hover"
             >
               Contact Me
             </a>

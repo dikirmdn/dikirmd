@@ -58,8 +58,8 @@ export default function Projects() {
   return (
     <section id="projects" className="relative min-h-screen px-6 py-32">
       <div className="mx-auto max-w-7xl relative z-10">
-        <h2 className="mb-16 text-center text-5xl font-bold text-gray-800 md:text-6xl">
-          Recent <span className="text-gray-600">Projects</span>
+        <h2 className="mb-16 text-center text-5xl font-bold text-gray-800 dark:text-gray-100 md:text-6xl">
+          Recent <span className="text-gray-600 dark:text-gray-400">Projects</span>
         </h2>
 
         <div ref={containerRef} className="grid gap-8 md:grid-cols-2">
@@ -80,14 +80,14 @@ export default function Projects() {
               </div>
 
               <div className="p-8">
-                <h3 className="mb-3 text-2xl font-bold text-gray-800">{project.title}</h3>
-                <p className="mb-4 text-gray-600">{project.description}</p>
+                <h3 className="mb-3 text-2xl font-bold text-gray-800 dark:text-gray-100">{project.title}</h3>
+                <p className="mb-4 text-gray-600 dark:text-gray-400">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="neo-flat rounded-full px-3 py-1 text-xs text-gray-700 font-medium"
+                      className="neo-flat rounded-full px-3 py-1 text-xs text-gray-700 dark:text-gray-300 font-medium"
                     >
                       {tech}
                     </span>
@@ -99,7 +99,7 @@ export default function Projects() {
                     href={project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="neo-raised neo-hover rounded-full px-6 py-2 text-sm text-gray-800 font-medium transition-all"
+                    className="neo-raised neo-hover rounded-full px-6 py-2 text-sm text-gray-800 dark:text-gray-100 font-medium transition-all"
                   >
                     View Website
                   </a>
@@ -108,7 +108,7 @@ export default function Projects() {
                       href={project.sourceUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="neo-pressed rounded-full px-6 py-2 text-sm text-gray-800 font-medium transition-all"
+                      className="neo-pressed rounded-full px-6 py-2 text-sm text-gray-800 dark:text-gray-100 font-medium transition-all"
                     >
                       Source Code
                     </a>

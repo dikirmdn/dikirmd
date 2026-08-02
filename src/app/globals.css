@@ -9,6 +9,8 @@
   --shadow-dark: #c8c6c1;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
+  --bg-gradient-start: #e8e6e1;
+  --bg-gradient-end: #f5f4f1;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -44,9 +46,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-inter);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -86,7 +87,7 @@
 }
 
 body {
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
@@ -100,16 +101,16 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #e8e6e1;
+  @apply bg-[#e8e6e1] dark:bg-[#1e2530];
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c8c6c1;
+  @apply bg-[#c8c6c1] dark:bg-[#2d3748];
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #b8b6b1;
+  @apply bg-[#b8b6b1] dark:bg-[#3d4758];
 }
 
 /* Neomorphism utilities */
@@ -220,6 +221,27 @@ input[type="range"].slider::-moz-range-thumb:hover {
     -6px -6px 12px var(--shadow-light);
 }
 
+/* Neomorphism Theme Toggle */
+.neo-toggle {
+  background: var(--background);
+  box-shadow: 
+    inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+}
+
+.neo-toggle-slider {
+  background: var(--background);
+  box-shadow: 
+    6px 6px 12px var(--shadow-dark),
+    -6px -6px 12px var(--shadow-light);
+}
+
+.neo-toggle:hover .neo-toggle-slider {
+  box-shadow: 
+    8px 8px 16px var(--shadow-dark),
+    -8px -8px 16px var(--shadow-light);
+}
+
 /* Hero Image Animations */
 @keyframes ping-slow {
   0%, 100% {
@@ -278,37 +300,127 @@ input[type="range"].slider::-moz-range-thumb:hover {
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --shadow-light: rgba(60, 70, 90, 0.8);
+  --shadow-dark: rgba(10, 15, 25, 0.9);
+  --background: #1a1a1f;
+  --foreground: #e5e7eb;
+  --bg-gradient-start: #1e2530;
+  --bg-gradient-end: #2d3748;
+  --card: #1a1a1f;
+  --card-foreground: #e2e8f0;
+  --popover: #2d3748;
+  --popover-foreground: #e2e8f0;
+  --primary: #cbd5e0;
+  --primary-foreground: #ffffff;
+  --secondary: #27272a;
+  --secondary-foreground: #e2e8f0;
+  --muted: #3d4758;
+  --muted-foreground: #a0aec0;
+  --accent: #3d4758;
+  --accent-foreground: #e2e8f0;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #718096;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar: #2d3748;
+  --sidebar-foreground: #e2e8f0;
   --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --sidebar-primary-foreground: #e2e8f0;
+  --sidebar-accent: #3d4758;
+  --sidebar-accent-foreground: #e2e8f0;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: #718096;
+}
+
+/* Enhanced Dark Mode Neomorphism */
+.dark .neo-raised {
+  background: var(--background);
+  box-shadow: 
+    10px 10px 20px var(--shadow-dark),
+    -10px -10px 20px var(--shadow-light);
+}
+
+.dark .neo-pressed {
+  background: var(--background);
+  box-shadow: 
+    inset 8px 8px 16px var(--shadow-dark),
+    inset -8px -8px 16px var(--shadow-light);
+}
+
+.dark .neo-flat {
+  background: var(--background);
+  box-shadow: 
+    6px 6px 14px var(--shadow-dark),
+    -6px -6px 14px var(--shadow-light);
+}
+
+.dark .neo-hover:hover {
+  box-shadow: 
+    15px 15px 30px var(--shadow-dark),
+    -15px -15px 30px var(--shadow-light);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Enhanced Dark Mode Range Slider */
+.dark input[type="range"].slider {
+  background: var(--background);
+  box-shadow: 
+    inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+}
+
+.dark input[type="range"].slider::-webkit-slider-thumb {
+  background: var(--background);
+  box-shadow: 
+    6px 6px 12px var(--shadow-dark),
+    -6px -6px 12px var(--shadow-light);
+}
+
+.dark input[type="range"].slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 
+    8px 8px 16px var(--shadow-dark),
+    -8px -8px 16px var(--shadow-light);
+}
+
+.dark input[type="range"].slider::-moz-range-thumb {
+  background: var(--background);
+  box-shadow: 
+    6px 6px 12px var(--shadow-dark),
+    -6px -6px 12px var(--shadow-light);
+}
+
+.dark input[type="range"].slider::-moz-range-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 
+    8px 8px 16px var(--shadow-dark),
+    -8px -8px 16px var(--shadow-light);
+}
+
+/* Enhanced Dark Mode Toggle */
+.dark .neo-toggle {
+  background: var(--background);
+  box-shadow: 
+    inset 5px 5px 10px var(--shadow-dark),
+    inset -5px -5px 10px var(--shadow-light);
+}
+
+.dark .neo-toggle-slider {
+  background: var(--background);
+  box-shadow: 
+    8px 8px 16px var(--shadow-dark),
+    -8px -8px 16px var(--shadow-light);
+}
+
+.dark .neo-toggle:hover .neo-toggle-slider {
+  box-shadow: 
+    10px 10px 20px var(--shadow-dark),
+    -10px -10px 20px var(--shadow-light);
 }
 
 @layer base {

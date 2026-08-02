@@ -67,8 +67,8 @@ export default function Skills() {
   return (
     <section id="skills" className="relative min-h-screen px-6 py-32">
       <div className="mx-auto max-w-7xl relative z-10">
-        <h2 className="mb-16 text-center text-5xl font-bold text-gray-800 md:text-6xl">
-          Tech <span className="text-gray-600">Stack</span>
+        <h2 className="mb-16 text-center text-5xl font-bold text-gray-800 dark:text-gray-100 md:text-6xl">
+          Tech <span className="text-gray-600 dark:text-gray-400">Stack</span>
         </h2>
 
         <div ref={containerRef} className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
@@ -83,7 +83,7 @@ export default function Skills() {
                 className="neo-raised neo-hover group relative flex flex-col items-center justify-center rounded-3xl p-8 transition-all duration-300"
               >
                 <Icon className="mb-4 text-6xl transition-transform duration-300 group-hover:scale-110" style={{ color: skill.color }} />
-                <span className="text-sm font-medium text-gray-700">{skill.name}</span>
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{skill.name}</span>
               </div>
             );
           })}

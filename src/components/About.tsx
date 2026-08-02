@@ -40,8 +40,8 @@ export default function About() {
   return (
     <section ref={sectionRef} id="about" className="relative min-h-screen px-6 py-32">
       <div className="mx-auto max-w-7xl relative z-10">
-        <h2 className="mb-16 text-center text-5xl font-bold text-gray-800 md:text-6xl">
-          About <span className="text-gray-600">Me</span>
+        <h2 className="mb-16 text-center text-5xl font-bold text-gray-800 dark:text-gray-100 md:text-6xl">
+          About <span className="text-gray-600 dark:text-gray-400">Me</span>
         </h2>
 
        <div className="grid grid-cols-4 grid-rows-2 gap-4 md:grid-cols-4 md:grid-rows-1 mb-16">
@@ -89,7 +89,7 @@ export default function About() {
           }}
           className="neo-raised rounded-3xl p-12"
         >
-          <p className="text-lg leading-relaxed text-gray-700">
+          <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
             I'm a fresh graduate with a GPA of 3.83 and a freelance web developer passionate about building clean, responsive, 
             and user-friendly web applications. I enjoy transforming ideas into functional digital experiences with a strong focus on
             performance, usability, and thoughtful design.

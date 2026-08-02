@@ -99,10 +99,10 @@ export default function Contact() {
     <section id="contact" className="relative min-h-screen px-6 py-32">
       <div className="mx-auto max-w-5xl relative z-10">
         <div ref={contentRef} className="text-center mb-16">
-          <h2 className="mb-6 text-5xl font-bold text-gray-800 md:text-6xl">
-            Let's <span className="text-gray-600">Collaborate</span>
+          <h2 className="mb-6 text-5xl font-bold text-gray-800 dark:text-gray-100 md:text-6xl">
+            Let's <span className="text-gray-600 dark:text-gray-400">Collaborate</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
             I'm open to collaboration opportunities, freelance projects, or simply discussing technology and ideas. 
             Feel free to reach out to me through the platforms below.
           </p>
@@ -117,29 +117,29 @@ export default function Contact() {
                 href={method.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="contact-card neo-raised neo-hover rounded-3xl p-8 transition-all duration-300 group text-gray-700"
+                className="contact-card neo-raised neo-hover rounded-3xl p-8 transition-all duration-300 group text-gray-700 dark:text-gray-300"
               >
                 <div className="inline-flex p-4 rounded-2xl neo-flat mb-4 group-hover:neo-pressed transition-all duration-300">
                   <Icon />
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">{method.title}</h3>
-                <p className="text-gray-600 text-xs font-mono break-all">{method.label}</p>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">{method.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-xs font-mono break-all">{method.label}</p>
               </a>
             );
           })}
         </div>
 
         <div className="neo-raised rounded-3xl p-8 md:p-12 text-center">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">
+          <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">
             Have an Interesting Project Idea?
           </h3>
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto">
             I'm always interested in challenging and innovative projects. 
             Let's turn your ideas into reality!
           </p>
           <a
             href="mailto:ramadhandiki940@gmail.com"
-            className="neo-pressed neo-hover inline-block rounded-full px-8 py-4 font-medium text-gray-800 transition-all duration-300"
+            className="neo-pressed neo-hover inline-block rounded-full px-8 py-4 font-medium text-gray-800 dark:text-gray-100 transition-all duration-300"
           >
             Contact Now!
           </a>
