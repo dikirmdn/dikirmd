@@ -45,9 +45,21 @@ export default function Navbar() {
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
-          <a href="#" className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+          {/* Logo - Hidden on Mobile */}
+          <a href="#" className="hidden md:block text-2xl font-bold text-gray-800 dark:text-gray-100">
             Dikirmd
           </a>
+
+          {/* Mobile: Theme Toggle (Left) */}
+          <div className="flex items-center md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="neo-flat p-3 rounded-full text-xl text-gray-800 dark:text-gray-100 transition-all duration-300"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          </div>
 
           {/* Desktop Menu */}
           <div className="hidden items-center gap-4 md:flex">
@@ -72,16 +84,10 @@ export default function Navbar() {
             <ThemeToggle />
           </div>
 
-          {/* Mobile Menu Button & Theme Toggle */}
-          <div className="flex items-center gap-4 md:hidden">
+          {/* Mobile: Menu Button (Right) */}
+          
+          <div className="flex items-center md:hidden">
             <ThemeToggle />
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="neo-flat p-3 rounded-full text-xl text-gray-800 dark:text-gray-100 transition-all duration-300"
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <FaTimes /> : <FaBars />}
-            </button>
           </div>
         </div>
       </div>
@@ -89,7 +95,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="neo-raised mt-4 rounded-2xl md:hidden">
-          <div className="neo-pressed rounded-2xl p-3 m-3 flex flex-col gap-2">
+          <div className="rounded-2xl p-4 flex flex-col gap-2">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.substring(1);
               return (
@@ -99,8 +105,8 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className={`font-medium rounded-xl px-5 py-3 transition-all duration-300 text-center ${
                     isActive
-                      ? 'neo-raised text-gray-900 dark:text-gray-100 scale-[1.02]'
-                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:neo-raised hover:scale-[1.02]'
+                      ? 'bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100'
+                      : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100'
                   }`}
                 >
                   {link.label}

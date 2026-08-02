@@ -7,7 +7,7 @@
 :root {
   --shadow-light: #ffffff;
   --shadow-dark: #c8c6c1;
-  --background: oklch(1 0 0);
+  --background: #e8e6e1;
   --foreground: oklch(0.145 0 0);
   --bg-gradient-start: #e8e6e1;
   --bg-gradient-end: #f5f4f1;
