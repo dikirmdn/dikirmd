@@ -90,9 +90,10 @@ export default function About() {
           className="neo-raised rounded-3xl p-12"
         >
           <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-            I'm a fresh graduate with a GPA of 3.83 and a freelance web developer passionate about building clean, responsive, 
-            and user-friendly web applications. I enjoy transforming ideas into functional digital experiences with a strong focus on
-            performance, usability, and thoughtful design.
+            I'm a fresh graduate with a GPA of 3.83 who is passionate about continuous learning and personal growth. 
+            I enjoy exploring new ideas, learning new technologies and skills, and adapting to new challenges. I also enjoy communicating and collaborating 
+            with new people, believing that teamwork and knowledge sharing are essential for achieving meaningful results. I am eager to contribute, grow professionally, 
+            and create a positive impact in every opportunity.
           </p>
         </div>
       </div>

@@ -107,10 +107,12 @@ export default function Hero() {
               View Projects
             </a>
             <a
-              href="#contact"
+              href="/cv.pdf"
+              target='_blank'
+              rel='noopener noreferrer'
               className="neo-flat rounded-full px-6 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 transition-all duration-300 hover:neo-hover"
             >
-              Contact Me
+              View CV
             </a>
           </div>
         </div>
@@ -195,10 +197,12 @@ export default function Hero() {
               View Projects
             </a>
             <a
-              href="#contact"
+              href="/cv.pdf"
+              target='_blank'
+              rel='noopener noreferrer'
               className="neo-flat rounded-full px-8 py-4 text-sm font-medium text-gray-700 dark:text-gray-300 transition-all duration-300 hover:neo-hover"
             >
-              Contact Me
+              View CV
             </a>
           </div>
         </div>
