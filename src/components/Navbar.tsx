@@ -33,7 +33,7 @@ export default function Navbar() {
   const navLinks = [
     { href: '#about', label: 'About' },
     { href: '#projects', label: 'Projects' },
-    { href: '#music', label: 'Music' },
+    // { href: '#music', label: 'Music' },
     { href: '#contact', label: 'Contact' },
   ];
 
