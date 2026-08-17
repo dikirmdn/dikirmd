@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { FaGithub, FaInstagram, FaTiktok } from 'react-icons/fa6';
 
 export default function Hero() {
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -61,17 +62,35 @@ export default function Hero() {
   // Mouse tracking for parallax effect
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!imageContainerRef.current) return;
-    
+
     const rect = imageContainerRef.current.getBoundingClientRect();
     const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
     const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
-    
+
     setMousePosition({ x: x * 30, y: y * 30 });
   };
 
   const handleMouseLeave = () => {
     setMousePosition({ x: 0, y: 0 });
   };
+
+  const socialLinks = [
+    {
+      name: 'GitHub',
+      href: 'https://github.com/dikirmdn',
+      icon: FaGithub,
+    },
+    {
+      name: 'Instagram',
+      href: 'https://instagram.com/dikirmdnnn',
+      icon: FaInstagram,
+    },
+    {
+      name: 'TikTok',
+      href: 'https://tiktok.com/@dkrmdnnn',
+      icon: FaTiktok,
+    },
+  ];
 
   return (
     <section className="relative w-full overflow-hidden">
@@ -99,32 +118,54 @@ export default function Hero() {
             Crafting elegant digital experiences with modern technology.
           </p>
 
-          <div ref={ctaRef} className="flex flex-col gap-3">
-            <a
-              href="#projects"
-              className="neo-raised neo-hover rounded-full px-6 py-3 text-sm font-medium text-gray-800 dark:text-gray-100 transition-all duration-300"
-            >
-              View Projects
-            </a>
-            <a
-              href="/cv.pdf"
-              target='_blank'
-              rel='noopener noreferrer'
-              className="neo-flat rounded-full px-6 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 transition-all duration-300 hover:neo-hover"
-            >
-              View CV
-            </a>
+          <div ref={ctaRef} className="flex flex-col items-center gap-6">
+            {/* Social Icons - Mobile */}
+            <div className="flex items-center justify-center gap-4">
+              {socialLinks.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={item.name}
+                    className="neo-raised neo-hover flex h-12 w-12 items-center justify-center rounded-full text-gray-700 dark:text-gray-300 transition-all duration-300 hover:scale-110"
+                  >
+                    <Icon className="h-5 w-5" />
+                  </a>
+                );
+              })}
+            </div>
+
+            {/* CTA Buttons - Mobile */}
+            <div className="flex flex-col w-full gap-3">
+              <a
+                href="#projects"
+                className="neo-raised neo-hover rounded-full px-6 py-3 text-sm font-medium text-gray-800 dark:text-gray-100 transition-all duration-300"
+              >
+                View Projects
+              </a>
+              <a
+                href="/cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="neo-flat rounded-full px-6 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 transition-all duration-300 hover:neo-hover"
+              >
+                View CV
+              </a>
+            </div>
           </div>
         </div>
 
         {/* Profile Image - Mobile */}
-        <div 
+        <div
           ref={imageContainerRef}
           className="relative mx-auto w-64 h-64"
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
         >
-          <div 
+          <div
             ref={imageRef}
             className="relative w-full h-full group cursor-pointer"
             style={{
@@ -135,7 +176,7 @@ export default function Hero() {
             {/* Animated rings */}
             <div className="absolute inset-0 rounded-full animate-ping-slow opacity-20 neo-raised"></div>
             <div className="absolute inset-0 rounded-full animate-pulse-slow opacity-30 neo-flat"></div>
-            
+
             {/* Main image container */}
             <div className="relative neo-raised rounded-full p-4 w-full h-full overflow-hidden transition-all duration-500 group-hover:scale-110 group-hover:neo-hover">
               <div className="relative w-full h-full rounded-full overflow-hidden">
@@ -185,36 +226,58 @@ export default function Hero() {
             ref={subtitleRef}
             className="mb-12 max-w-xl text-xl leading-relaxed text-gray-600 dark:text-gray-400"
           >
-            Crafting clean and functional web experiences with modern technology. 
+            Crafting clean and functional web experiences with modern technology.
             Focused on building responsive and user-friendly applications.
           </p>
 
-          <div ref={ctaRef} className="flex gap-4">
-            <a
-              href="#projects"
-              className="neo-raised neo-hover rounded-full px-8 py-4 text-sm font-medium text-gray-800 dark:text-gray-100 transition-all duration-300"
-            >
-              View Projects
-            </a>
-            <a
-              href="/cv.pdf"
-              target='_blank'
-              rel='noopener noreferrer'
-              className="neo-flat rounded-full px-8 py-4 text-sm font-medium text-gray-700 dark:text-gray-300 transition-all duration-300 hover:neo-hover"
-            >
-              View CV
-            </a>
+          <div ref={ctaRef} className="flex flex-col gap-6">
+            {/* Social Icons - Desktop */}
+            <div className="flex items-center gap-4">
+              {socialLinks.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={item.name}
+                    className="neo-raised neo-hover flex h-12 w-12 items-center justify-center rounded-full text-gray-700 dark:text-gray-300 transition-all duration-300 hover:scale-110"
+                  >
+                    <Icon className="h-5 w-5" />
+                  </a>
+                );
+              })}
+            </div>
+
+            {/* CTA Buttons - Desktop */}
+            <div className="flex gap-4">
+              <a
+                href="#projects"
+                className="neo-raised neo-hover rounded-full px-8 py-4 text-sm font-medium text-gray-800 dark:text-gray-100 transition-all duration-300"
+              >
+                View Projects
+              </a>
+              <a
+                href="/cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="neo-flat rounded-full px-8 py-4 text-sm font-medium text-gray-700 dark:text-gray-300 transition-all duration-300 hover:neo-hover"
+              >
+                View CV
+              </a>
+            </div>
           </div>
         </div>
 
         {/* Profile Image - Desktop */}
-        <div 
+        <div
           ref={imageContainerRef}
           className="relative flex justify-center"
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
         >
-          <div 
+          <div
             ref={imageRef}
             className="relative w-96 h-96 group cursor-pointer"
             style={{
@@ -225,7 +288,7 @@ export default function Hero() {
             {/* Animated outer rings */}
             <div className="absolute -inset-4 rounded-full animate-ping-slow opacity-20 neo-raised"></div>
             <div className="absolute -inset-2 rounded-full animate-pulse-slow opacity-30 neo-flat"></div>
-            
+
             {/* Main image container */}
             <div className="relative neo-raised rounded-full p-6 w-full h-full transition-all duration-500 group-hover:scale-105 group-hover:neo-hover">
               <div className="neo-pressed rounded-full w-full h-full overflow-hidden">
@@ -260,3 +323,4 @@ export default function Hero() {
     </section>
   );
 }
+
