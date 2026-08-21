@@ -27,49 +27,70 @@ const GitHubIcon = () => (
 );
 
 export default function Contact() {
+  const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+          toggleActions: 'play none none none',
+        },
+      });
+
       if (contentRef.current) {
-        gsap.fromTo(
+        tl.fromTo(
           contentRef.current,
-          { opacity: 0, y: 50 },
+          { opacity: 0, y: 40, scale: 0.98 },
           {
-            scrollTrigger: {
-              trigger: contentRef.current,
-              start: 'top 80%',
-              toggleActions: 'play none none reverse',
-            },
             opacity: 1,
             y: 0,
-            duration: 1,
+            scale: 1,
+            duration: 0.9,
             ease: 'power3.out',
+            clearProps: 'transform',
           }
         );
       }
 
       if (cardsRef.current) {
         const cards = cardsRef.current.querySelectorAll('.contact-card');
-        gsap.fromTo(
+        tl.fromTo(
           cards,
-          { opacity: 0, y: 30 },
+          { opacity: 0, y: 35, scale: 0.95 },
           {
-            scrollTrigger: {
-              trigger: cardsRef.current,
-              start: 'top 70%',
-              toggleActions: 'play none none reverse',
-            },
             opacity: 1,
             y: 0,
-            stagger: 0.15,
-            duration: 0.8,
+            scale: 1,
+            stagger: 0.12,
+            duration: 0.85,
             ease: 'power3.out',
-          }
+            clearProps: 'transform',
+          },
+          '-=0.5'
         );
       }
-    });
+
+      if (ctaRef.current) {
+        tl.fromTo(
+          ctaRef.current,
+          { opacity: 0, y: 30, scale: 0.96 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.85,
+            ease: 'power3.out',
+            clearProps: 'transform',
+          },
+          '-=0.4'
+        );
+      }
+    }, sectionRef);
 
     return () => ctx.revert();
   }, []);
@@ -84,7 +105,7 @@ export default function Contact() {
     {
       icon: LinkedInIcon,
       title: 'LinkedIn',
-      href: 'www.linkedin.com/in/diki-ramadan',
+      href: 'https://www.linkedin.com/in/diki-ramadan',
       label: 'www.linkedin.com/in/diki-ramadan',
     },
     {
@@ -96,7 +117,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="relative min-h-screen px-6 py-32">
+    <section ref={sectionRef} id="contact" className="relative min-h-screen px-6 py-32">
       <div className="mx-auto max-w-5xl relative z-10">
         <div ref={contentRef} className="text-center mb-16">
           <h2 className="mb-6 text-5xl font-bold text-gray-800 dark:text-gray-100 md:text-6xl">
@@ -129,7 +150,7 @@ export default function Contact() {
           })}
         </div>
 
-        <div className="neo-raised rounded-3xl p-8 md:p-12 text-center">
+        <div ref={ctaRef} className="neo-raised rounded-3xl p-8 md:p-12 text-center">
           <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">
             Have an Interesting Project Idea?
           </h3>
@@ -148,3 +169,4 @@ export default function Contact() {
     </section>
   );
 }
+
