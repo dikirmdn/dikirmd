@@ -2,58 +2,105 @@
 
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import { FaGithub, FaInstagram, FaTiktok } from 'react-icons/fa6';
+import { FaGithub, FaInstagram, FaTiktok, FaLinkedin } from 'react-icons/fa6';
+import { ArrowUpRight } from 'lucide-react';
 
 export default function Hero() {
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const badgeRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const subtitleRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const imageContainerRef = useRef<HTMLDivElement>(null);
+  const socialRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(titleRef.current, {
-        opacity: 0,
-        x: -50,
-        duration: 1.2,
-        ease: 'power3.out',
-        delay: 0.3,
-      });
+      if (badgeRef.current) {
+        gsap.fromTo(
+          badgeRef.current,
+          { opacity: 0, y: -20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            delay: 0.2,
+          }
+        );
+      }
 
-      gsap.from(subtitleRef.current, {
-        opacity: 0,
-        x: -30,
-        duration: 1,
-        ease: 'power3.out',
-        delay: 0.6,
-      });
+      if (titleRef.current) {
+        gsap.fromTo(
+          titleRef.current,
+          { opacity: 0, y: -50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: 'power3.out',
+            delay: 0.3,
+          }
+        );
+      }
 
-      gsap.from(ctaRef.current, {
-        opacity: 0,
-        y: 20,
-        duration: 0.8,
-        ease: 'power3.out',
-        delay: 0.9,
-      });
+      if (subtitleRef.current) {
+        gsap.fromTo(
+          subtitleRef.current,
+          { opacity: 0, x: -50 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            ease: 'power3.out',
+            delay: 0.5,
+          }
+        );
+      }
 
-      gsap.from(imageRef.current, {
-        opacity: 0,
-        scale: 0.8,
-        duration: 1.2,
-        ease: 'power3.out',
-        delay: 0.5,
-      });
+      if (ctaRef.current) {
+        gsap.fromTo(
+          ctaRef.current,
+          { opacity: 0, x: -50 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            delay: 0.7,
+          }
+        );
+      }
 
-      // Floating animation
-      gsap.to(imageRef.current, {
-        y: -20,
-        duration: 2.5,
-        ease: 'power1.inOut',
-        repeat: -1,
-        yoyo: true,
-      });
+      if (imageRef.current) {
+        gsap.fromTo(
+          imageRef.current,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: 'power3.out',
+            delay: 0.4,
+          }
+        );
+      }
+
+      if (socialRef.current && socialRef.current.children.length > 0) {
+        gsap.fromTo(
+          socialRef.current.children,
+          { opacity: 0, x: 50 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: 'power3.out',
+            delay: 0.6,
+          }
+        );
+      }
     });
 
     return () => ctx.revert();
@@ -67,7 +114,7 @@ export default function Hero() {
     const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
     const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
 
-    setMousePosition({ x: x * 30, y: y * 30 });
+    setMousePosition({ x: x * 20, y: y * 20 });
   };
 
   const handleMouseLeave = () => {
@@ -86,6 +133,11 @@ export default function Hero() {
       icon: FaInstagram,
     },
     {
+      name: 'LinkedIn',
+      href: 'https://www.linkedin.com/in/diki-ramadan',
+      icon: FaLinkedin,
+    },
+    {
       name: 'TikTok',
       href: 'https://tiktok.com/@dkrmdnnn',
       icon: FaTiktok,
@@ -93,234 +145,109 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative w-full overflow-hidden">
-      {/* Mobile Layout */}
-      <div className="flex min-h-screen flex-col justify-center px-4 py-20 lg:hidden">
-        {/* Text Content - Mobile */}
-        <div className="z-10 mb-12 text-center">
-          <h1
-            ref={titleRef}
-            className="mb-4 text-5xl font-bold leading-tight tracking-tight text-gray-800 dark:text-gray-100 sm:text-6xl"
-          >
-            Diki
-            <br />
-            <span className="bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 dark:from-gray-300 dark:via-gray-400 dark:to-gray-200 bg-clip-text text-transparent">
-              Ramadan's
-            </span>
-            <br />
-            Page
-          </h1>
-
-          <p
-            ref={subtitleRef}
-            className="mb-8 text-sm leading-relaxed text-gray-600 dark:text-gray-400 sm:text-base"
-          >
-            Crafting elegant digital experiences with modern technology.
-          </p>
-
-          <div ref={ctaRef} className="flex flex-col items-center gap-6">
-            {/* Social Icons - Mobile */}
-            <div className="flex items-center justify-center gap-4">
-              {socialLinks.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={item.name}
-                    className="neo-raised neo-hover flex h-12 w-12 items-center justify-center rounded-full text-gray-700 dark:text-gray-300 transition-all duration-300 hover:scale-110"
-                  >
-                    <Icon className="h-5 w-5" />
-                  </a>
-                );
-              })}
-            </div>
-
-            {/* CTA Buttons - Mobile */}
-            <div className="flex flex-col w-full gap-3">
-              <a
-                href="#projects"
-                className="neo-raised neo-hover rounded-full px-6 py-3 text-sm font-medium text-gray-800 dark:text-gray-100 transition-all duration-300"
-              >
-                View Projects
-              </a>
-              <a
-                href="/cv.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="neo-flat rounded-full px-6 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 transition-all duration-300 hover:neo-hover"
-              >
-                View CV
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Profile Image - Mobile */}
+    <section className="relative min-h-screen w-full overflow-hidden px-4 sm:px-6 pt-24 pb-12 lg:pt-28 lg:pb-16 flex flex-col justify-between max-w-7xl mx-auto">
+      {/* Top Bar / Status Badge Pill */}
+      <div className="hidden md:block w-full items-center justify-between mb-2 lg:mb-4 z-10">
         <div
-          ref={imageContainerRef}
-          className="relative mx-auto w-64 h-64"
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
+          ref={badgeRef}
+          className="neo-raised inline-flex items-center gap-2.5 rounded-full px-4 py-2 text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300"
         >
-          <div
-            ref={imageRef}
-            className="relative w-full h-full group cursor-pointer"
-            style={{
-              transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
-              transition: 'transform 0.3s ease-out',
-            }}
-          >
-            {/* Animated rings */}
-            <div className="absolute inset-0 rounded-full animate-ping-slow opacity-20 neo-raised"></div>
-            <div className="absolute inset-0 rounded-full animate-pulse-slow opacity-30 neo-flat"></div>
-
-            {/* Main image container */}
-            <div className="relative neo-raised rounded-full p-4 w-full h-full overflow-hidden transition-all duration-500 group-hover:scale-110 group-hover:neo-hover">
-              <div className="relative w-full h-full rounded-full overflow-hidden">
-                <img
-                  src="/profile.jpeg"
-                  alt="Diki Ramadan"
-                  className="w-full h-full object-cover rounded-full transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3"
-                />
-                {/* Shine effect on hover */}
-                <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{
-                    background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 60%)',
-                  }}
-                ></div>
-              </div>
-            </div>
-
-            {/* Decorative orbiting dots */}
-            <div className="absolute inset-0 animate-spin-slow">
-              <div className="absolute top-0 left-1/2 w-3 h-3 -ml-1.5 -mt-1.5 neo-raised rounded-full bg-gray-300"></div>
-            </div>
-            <div className="absolute inset-0 animate-spin-reverse-slow">
-              <div className="absolute bottom-0 left-1/2 w-3 h-3 -ml-1.5 -mb-1.5 neo-raised rounded-full bg-gray-400"></div>
-            </div>
-          </div>
+          #OpenToWork
         </div>
       </div>
 
-      {/* Desktop Layout */}
-      <div className="mx-auto hidden min-h-screen max-w-7xl grid-cols-2 items-center gap-16 px-6 py-32 lg:grid">
-        {/* Text Content - Desktop */}
-        <div className="z-10 flex flex-col justify-center">
-          <h1
-            ref={titleRef}
-            className="mb-6 text-7xl font-bold leading-tight tracking-tight text-gray-800 dark:text-gray-100 md:text-7xl"
-          >
-            Diki
-            <br />
-            <span className="bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 dark:from-gray-300 dark:via-gray-400 dark:to-gray-200 bg-clip-text text-transparent">
-              Ramadan's
-            </span>
-            <br />
-            Page
-          </h1>
+      {/* Main Hero Header Title - Spanning Full Width */}
+      <div
+        ref={titleRef}
+        className="w-full flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4 mt-0 mb-6 sm:mb-8 lg:mb-12 z-10 select-none"
+      >
+        <h1 className="font-black uppercase tracking-tighter leading-none text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] xl:text-[9.5rem] 2xl:text-[11rem] text-transparent [-webkit-text-stroke:2px_#374151] dark:[-webkit-text-stroke:2px_#e5e7eb] lg:[-webkit-text-stroke:3px_#374151] dark:lg:[-webkit-text-stroke:3px_#e5e7eb]">
+          DIKI
+        </h1>
+        <h1 className="font-black uppercase tracking-tighter leading-none text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] xl:text-[9.5rem] 2xl:text-[11rem] text-gray-800 dark:text-gray-100">
+          RAMADAN
+        </h1>
+      </div>
 
-          <p
-            ref={subtitleRef}
-            className="mb-12 max-w-xl text-xl leading-relaxed text-gray-600 dark:text-gray-400"
-          >
-            Crafting clean and functional web experiences with modern technology.
-            Focused on building responsive and user-friendly applications.
-          </p>
+      {/* 3-Column Layout Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-4 items-end w-full mt-4 lg:mt-6 relative z-20">
+        {/* Left Column: Role, Description, CTA */}
+        <div className="lg:col-span-3 flex flex-col items-center lg:items-start text-center lg:text-left z-20 order-2 lg:order-1 pb-8 lg:pb-24">
+          <div ref={subtitleRef} className="max-w-md ">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 dark:text-gray-100 tracking-tight mb-3">
+              Full-Stack Developer
+            </h2>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+              Crafting clean and functional web experiences with modern technology. Focused on building responsive and user-friendly applications.
+            </p>
+          </div>
 
-          <div ref={ctaRef} className="flex flex-col gap-6">
-            {/* Social Icons - Desktop */}
-            <div className="flex items-center gap-4">
-              {socialLinks.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={item.name}
-                    className="neo-raised neo-hover flex h-12 w-12 items-center justify-center rounded-full text-gray-700 dark:text-gray-300 transition-all duration-300 hover:scale-110"
-                  >
-                    <Icon className="h-5 w-5" />
-                  </a>
-                );
-              })}
-            </div>
+          <div ref={ctaRef} className="flex flex-wrap items-center justify-center lg:justify-start gap-3 w-full sm:w-auto">
 
-            {/* CTA Buttons - Desktop */}
-            <div className="flex gap-4">
-              <a
-                href="#projects"
-                className="neo-raised neo-hover rounded-full px-8 py-4 text-sm font-medium text-gray-800 dark:text-gray-100 transition-all duration-300"
-              >
-                View Projects
-              </a>
-              <a
-                href="/cv.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="neo-flat rounded-full px-8 py-4 text-sm font-medium text-gray-700 dark:text-gray-300 transition-all duration-300 hover:neo-hover"
-              >
-                View CV
-              </a>
-            </div>
+
+            <a
+              href="/cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="neo-flat neo-hover group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium text-gray-700 dark:text-gray-300 transition-all duration-300 hover:scale-105"
+            >
+              <span>View CV</span>
+              <ArrowUpRight className="h-4 w-4 opacity-60 transition-transform duration-300 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
           </div>
         </div>
 
-        {/* Profile Image - Desktop */}
+        {/* Center Column: Portrait Image (overlapping the giant title text) */}
         <div
           ref={imageContainerRef}
-          className="relative flex justify-center"
+          className="lg:col-span-6 flex justify-center items-end relative z-30 order-1 lg:order-2 -mt-4 sm:-mt-8 lg:-mt-16 xl:-mt-24 2xl:-mt-28"
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
         >
           <div
             ref={imageRef}
-            className="relative w-96 h-96 group cursor-pointer"
-            style={{
-              transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
-              transition: 'transform 0.3s ease-out',
-            }}
+            className="relative flex justify-center items-end group cursor-pointer"
           >
-            {/* Animated outer rings */}
-            <div className="absolute -inset-4 rounded-full animate-ping-slow opacity-20 neo-raised"></div>
-            <div className="absolute -inset-2 rounded-full animate-pulse-slow opacity-30 neo-flat"></div>
+            <img
+              src="/hero-img.png"
+              alt="Diki Ramadan"
+              className="w-[320px] sm:w-[420px] md:w-[500px] lg:w-[620px] xl:w-[720px] 2xl:w-[820px] max-w-none h-auto object-contain transition-transform duration-500 group-hover:scale-[1.02] drop-shadow-2xl"
+            />
+          </div>
+        </div>
 
-            {/* Main image container */}
-            <div className="relative neo-raised rounded-full p-6 w-full h-full transition-all duration-500 group-hover:scale-105 group-hover:neo-hover">
-              <div className="neo-pressed rounded-full w-full h-full overflow-hidden">
-                <div className="relative w-full h-full rounded-full overflow-hidden">
-                  <img
-                    src="/profile.jpeg"
-                    alt="Diki Ramadan"
-                    className="w-full h-full object-cover rounded-full transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2"
-                  />
-                  {/* Shine effect on hover */}
-                  <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                    style={{
-                      background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 60%)',
-                    }}
-                  ></div>
+        {/* Right Column: Social Links Stack */}
+        <div className="lg:col-span-3 flex flex-col items-center lg:items-end justify-center z-20 order-3 w-full pb-8 lg:pb-24">
+          <div
+            ref={socialRef}
+            className="flex flex-row lg:flex-col gap-3 justify-center items-center w-full max-w-xs lg:max-w-[190px] xl:max-w-[210px]"
+          >
+            {socialLinks.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.name} className="w-auto sm:w-full">
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={item.name}
+                    aria-label={item.name}
+                    className="neo-raised neo-hover group flex items-center justify-center sm:justify-between rounded-full p-3.5 sm:px-5 sm:py-3 text-sm font-medium text-gray-700 dark:text-gray-300 transition-all duration-300 hover:scale-105 hover:text-gray-900 dark:hover:text-white w-11 h-11 sm:w-full sm:h-auto"
+                  >
+                    <span className="flex items-center gap-3">
+                      <Icon className="h-5 w-5 sm:h-4 sm:w-4 text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors" />
+                      <span className="hidden sm:inline">{item.name}</span>
+                    </span>
+                    <ArrowUpRight className="hidden sm:block h-4 w-4 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                  </a>
                 </div>
-              </div>
-            </div>
-
-            {/* Decorative orbiting dots */}
-            <div className="absolute inset-0 animate-spin-slow">
-              <div className="absolute top-0 left-1/2 w-4 h-4 -ml-2 -mt-2 neo-raised rounded-full bg-gray-300"></div>
-              <div className="absolute top-1/4 right-0 w-3 h-3 -mr-1.5 neo-raised rounded-full bg-gray-200"></div>
-            </div>
-            <div className="absolute inset-0 animate-spin-reverse-slow">
-              <div className="absolute bottom-0 left-1/2 w-4 h-4 -ml-2 -mb-2 neo-raised rounded-full bg-gray-400"></div>
-              <div className="absolute bottom-1/4 left-0 w-3 h-3 -ml-1.5 neo-raised rounded-full bg-gray-300"></div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </div>
     </section>
   );
 }
+
 

@@ -59,7 +59,7 @@ export default function Projects() {
     <section id="projects" className="relative min-h-screen px-6 py-32">
       <div className="mx-auto max-w-7xl relative z-10">
         <h2 className="mb-16 text-center text-5xl font-bold text-gray-800 dark:text-gray-100 md:text-6xl">
-          Recent <span className="text-gray-600 dark:text-gray-400">Projects</span>
+          Selected <span className="text-gray-600 dark:text-gray-400">Projects</span>
         </h2>
 
         <div ref={containerRef} className="grid gap-8 md:grid-cols-2">
