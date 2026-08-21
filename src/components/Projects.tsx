@@ -8,24 +8,58 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Projects() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
   const projectsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
-    const projects = projectsRef.current;
+    const ctx = gsap.context(() => {
+      if (titleRef.current) {
+        gsap.fromTo(
+          titleRef.current,
+          { opacity: 0, y: 30 },
+          {
+            scrollTrigger: {
+              trigger: titleRef.current,
+              start: 'top 85%',
+              toggleActions: 'play none none none',
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+          }
+        );
+      }
 
-    projects.forEach((project, index) => {
-      gsap.from(project, {
-        scrollTrigger: {
-          trigger: project,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
-        },
-        opacity: 0,
-        x: index % 2 === 0 ? -100 : 100,
-        duration: 1,
-        ease: 'power3.out',
+      projectsRef.current.forEach((project, index) => {
+        if (!project) return;
+
+        gsap.fromTo(
+          project,
+          {
+            opacity: 0,
+            y: 50,
+            scale: 0.96,
+          },
+          {
+            scrollTrigger: {
+              trigger: project,
+              start: 'top 85%',
+              toggleActions: 'play none none none',
+            },
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.9,
+            delay: (index % 2) * 0.15,
+            ease: 'power3.out',
+            clearProps: 'transform',
+          }
+        );
       });
-    });
+    }, containerRef);
+
+    return () => ctx.revert();
   }, []);
 
   const projects = [
@@ -56,13 +90,13 @@ export default function Projects() {
   ];
 
   return (
-    <section id="projects" className="relative min-h-screen px-6 py-32">
+    <section ref={containerRef} id="projects" className="relative min-h-screen px-6 py-32">
       <div className="mx-auto max-w-7xl relative z-10">
-        <h2 className="mb-16 text-center text-5xl font-bold text-gray-800 dark:text-gray-100 md:text-6xl">
+        <h2 ref={titleRef} className="mb-16 text-center text-5xl font-bold text-gray-800 dark:text-gray-100 md:text-6xl">
           Selected <span className="text-gray-600 dark:text-gray-400">Projects</span>
         </h2>
 
-        <div ref={containerRef} className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-2">
           {projects.map((project, index) => (
             <div
               key={project.title}
