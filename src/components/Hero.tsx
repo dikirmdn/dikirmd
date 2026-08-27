@@ -145,9 +145,20 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden px-4 sm:px-6 pt-24 pb-12 lg:pt-28 lg:pb-16 flex flex-col justify-between max-w-7xl mx-auto">
+    <section
+      id="home"
+      aria-label="Hero - Diki Ramadan, Freelance Web Developer"
+      className="relative min-h-screen w-full overflow-hidden px-4 sm:px-6 pt-24 pb-12 lg:pt-28 lg:pb-16 flex flex-col justify-between max-w-7xl mx-auto"
+    >
+      {/* SEO-only content, visually hidden but crawlable */}
+      <p className="sr-only">
+        Diki Ramadan (Diki) adalah seorang Freelance Web Developer dan Full-Stack
+        Developer asal Indonesia. Diki membangun website modern, responsif, dan
+        cepat menggunakan Next.js, React, dan TypeScript. Halaman ini adalah
+        portfolio resmi Diki Ramadan.
+      </p>
       {/* Top Bar / Status Badge Pill */}
-      <div className="hidden md:block w-full items-center justify-between mb-2 lg:mb-4 z-10">
+      <div className="hidden md:block w-full items-center justify-between mt-12 lg:mb-4 z-10">
         <div
           ref={badgeRef}
           className="neo-raised inline-flex items-center gap-2.5 rounded-full px-4 py-2 text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300"
@@ -159,12 +170,18 @@ export default function Hero() {
       {/* Main Hero Header Title - Spanning Full Width */}
       <div
         ref={titleRef}
-        className="w-full flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4 mt-0 mb-6 sm:mb-8 lg:mb-12 z-10 select-none"
+        className="w-full flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 lg:gap-8 mt-0 mb-6 sm:mb-8 lg:mb-12 z-10 select-none px-2"
       >
-        <h1 className="font-black uppercase tracking-tighter leading-none text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] xl:text-[9.5rem] 2xl:text-[11rem] text-transparent [-webkit-text-stroke:2px_#374151] dark:[-webkit-text-stroke:2px_#e5e7eb] lg:[-webkit-text-stroke:3px_#374151] dark:lg:[-webkit-text-stroke:3px_#e5e7eb]">
+        <h1
+          style={{ fontSize: 'clamp(3rem, 10.5vw, 9rem)' }}
+          className="font-black uppercase tracking-tighter leading-none text-transparent whitespace-nowrap [-webkit-text-stroke:2px_#374151] dark:[-webkit-text-stroke:2px_#e5e7eb] lg:[-webkit-text-stroke:3px_#374151] dark:lg:[-webkit-text-stroke:3px_#e5e7eb]"
+        >
           DIKI
         </h1>
-        <h1 className="font-black uppercase tracking-tighter leading-none text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] xl:text-[9.5rem] 2xl:text-[11rem] text-gray-800 dark:text-gray-100">
+        <h1
+          style={{ fontSize: 'clamp(3rem, 10.5vw, 9rem)' }}
+          className="font-black uppercase tracking-tighter leading-none whitespace-nowrap text-gray-800 dark:text-gray-100"
+        >
           RAMADAN
         </h1>
       </div>
@@ -210,7 +227,11 @@ export default function Hero() {
           >
             <img
               src="/hero-img.png"
-              alt="Diki Ramadan"
+              alt="Diki Ramadan - Freelance Web Developer"
+              width={820}
+              height={820}
+              loading="eager"
+              fetchPriority="high"
               className="w-[320px] sm:w-[420px] md:w-[500px] lg:w-[620px] xl:w-[720px] 2xl:w-[820px] max-w-none h-auto object-contain grayscale transition-transform duration-500 group-hover:scale-[1.02] drop-shadow-2xl"
             />
           </div>
