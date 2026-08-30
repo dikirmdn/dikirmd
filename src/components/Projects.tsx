@@ -1,8 +1,11 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Link from 'next/link';
+import { FaArrowRight, FaExternalLinkAlt } from 'react-icons/fa';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { projects } from '@/lib/projects';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,33 +65,6 @@ export default function Projects() {
     return () => ctx.revert();
   }, []);
 
-  const projects = [
-    {
-      title: 'Room Booking',
-      description: 'Web based room reservation system with real-time booking management and schedule tracking.',
-      tech: ['Laravel', 'MySQL', 'TailwindCSS', 'Alpinejs'],
-      image: '/bookings.png',
-      demoUrl: 'https://bookingroom.dsi.co.id',
-      sourceUrl: '',
-    },
-    {
-      title: 'Competency Test for Prospective Employees',
-      description: 'Online employee assessment platform with interactive tests.',
-      tech: ['Laravel', 'MySQL', 'TailwindCSS', 'Alpinejs'],
-      image: '/iqtest.png',
-      demoUrl: 'https://demo.dikirmd.tech',
-      sourceUrl: '',
-    },
-    {
-      title: 'DSI Recruitment Portal',
-      description: 'A professional recruitment platform for DSI that enables job seekers to explore career opportunities, submit applications online, and streamline the hiring process efficiently.',
-      tech: ['Laravel', 'MySQL', 'TailwindCSS', 'Alpinejs'],
-      image: '/karir.png',
-      demoUrl: 'https://karir.dsi.co.id',
-      sourceUrl: '',
-    },
-  ];
-
   return (
     <section ref={containerRef} id="projects" className="relative min-h-screen px-6 py-32">
       <div className="mx-auto max-w-7xl relative z-10">
@@ -99,56 +75,45 @@ export default function Projects() {
         <div className="grid gap-8 md:grid-cols-2">
           {projects.map((project, index) => (
             <div
-              key={project.title}
+              key={project.slug}
               ref={(el) => {
                 if (el) projectsRef.current[index] = el;
               }}
-              className="neo-raised group overflow-hidden rounded-3xl transition-all duration-500 hover:neo-hover"
+              className="neo-raised group flex flex-col overflow-hidden rounded-3xl transition-all duration-500 hover:neo-hover"
             >
-              <div className="relative h-64 overflow-hidden neo-pressed">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
+              <Link href={`/projects/${project.slug}`} className="flex flex-1 flex-col">
+                <div className="relative h-64 overflow-hidden neo-pressed">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                </div>
 
-              <div className="p-8">
-                <h3 className="mb-3 text-2xl font-bold text-gray-800 dark:text-gray-100">{project.title}</h3>
-                <p className="mb-4 text-gray-600 dark:text-gray-400">{project.description}</p>
+                <div className="flex flex-1 flex-col p-8">
+                  <h3 className="mb-3 text-2xl font-bold text-gray-800 dark:text-gray-100">{project.title}</h3>
+                  <p className="mb-4 text-gray-600 dark:text-gray-400">{project.description}</p>
 
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="neo-flat rounded-full px-3 py-1 text-xs text-gray-700 dark:text-gray-300 font-medium"
-                    >
-                      {tech}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tech.map((tech) => (
+                      <span
+                        key={tech}
+                        className="neo-pressed rounded-full px-3 py-1 text-xs text-gray-700 dark:text-gray-300 font-medium"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-auto flex items-center justify-between gap-4 border-t border-black/5 pt-6 dark:border-white/5">
+                    <span className="neo-raised neo-hover inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm text-gray-800 dark:text-gray-100 font-medium transition-all">
+                      View Details
+                      <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
                     </span>
-                  ))}
-                </div>
 
-                <div className="flex gap-4">
-                  <a
-                    href={project.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="neo-raised neo-hover rounded-full px-6 py-2 text-sm text-gray-800 dark:text-gray-100 font-medium transition-all"
-                  >
-                    View Website
-                  </a>
-                  {project.sourceUrl && (
-                    <a
-                      href={project.sourceUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="neo-pressed rounded-full px-6 py-2 text-sm text-gray-800 dark:text-gray-100 font-medium transition-all"
-                    >
-                      Source Code
-                    </a>
-                  )}
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           ))}
         </div>
