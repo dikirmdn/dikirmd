@@ -73,7 +73,7 @@ export default function About() {
               <div className="neo-pressed aspect-[4/5] w-full overflow-hidden">
                 <img
                   src="/galeri1.jpeg"
-                  alt="Portrait"
+                  alt="Diki Ramadan (dikirmd / diki rmd) - Porto Diki Ramadan"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
@@ -108,16 +108,13 @@ export default function About() {
               className="neo-raised rounded-3xl p-6 sm:p-8 md:p-10"
             >
               <span className="neo-flat mb-4 inline-block rounded-full px-4 py-1 text-xs font-medium uppercase tracking-wider text-gray-600 dark:text-gray-400">
-                Hello there
+                Diki Ramadan (@dikirmd)
               </span>
               <h3 className="mb-4 text-2xl font-bold text-gray-800 dark:text-gray-100 sm:text-3xl">
-                Fresh graduate with a passion for growth.
+                Fresh graduate with a passion for growth & web development.
               </h3>
               <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 sm:text-base">
-                I'm passionate about continuous learning and personal growth. I enjoy exploring new
-                ideas, learning new technologies and skills, and adapting to new challenges. I also
-                love communicating and collaborating with new people, believing that teamwork and
-                knowledge sharing are essential for achieving meaningful results.
+                I'm Diki Ramadan (known online as dikirmd / diki rmd), a Web Developer passionate about continuous learning and personal growth. I enjoy building modern web applications, exploring new technologies, and collaborating on impactful projects. Welcome to my official portfolio (porto Diki Ramadan).
               </p>
             </div>
 

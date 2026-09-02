@@ -147,15 +147,15 @@ export default function Hero() {
   return (
     <section
       id="home"
-      aria-label="Hero - Diki Ramadan, Freelance Web Developer"
+      aria-label="Hero - Porto Diki Ramadan (dikirmd / diki rmd), Freelance Web Developer"
       className="relative min-h-screen w-full overflow-hidden px-4 sm:px-6 pt-24 pb-12 lg:pt-28 lg:pb-16 flex flex-col justify-between max-w-7xl mx-auto"
     >
       {/* SEO-only content, visually hidden but crawlable */}
       <p className="sr-only">
-        Diki Ramadan (Diki) adalah seorang Freelance Web Developer dan Full-Stack
+        Porto Diki Ramadan (dikirmd / diki rmd) - Diki Ramadan adalah seorang Freelance Web Developer dan Full-Stack
         Developer asal Indonesia. Diki membangun website modern, responsif, dan
         cepat menggunakan Next.js, React, dan TypeScript. Halaman ini adalah
-        portfolio resmi Diki Ramadan.
+        porto resmi Diki Ramadan.
       </p>
       {/* Top Bar / Status Badge Pill */}
       <div className="hidden md:block w-full items-center justify-between mt-12 lg:mb-4 z-10">
@@ -233,7 +233,7 @@ export default function Hero() {
             {/* Base Image (Grayscale only on laptop/desktop lg+, colored on mobile/tablet) */}
             <img
               src="/hero-img.png"
-              alt="Diki Ramadan - Freelance Web Developer"
+              alt="Diki Ramadan (dikirmd / diki rmd) - Porto Diki Ramadan"
               width={820}
               height={820}
               loading="eager"

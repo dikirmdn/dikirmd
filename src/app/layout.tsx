@@ -17,22 +17,29 @@ const siteUrl = "https://dikirmd.tech";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Diki Ramadan | Freelance Web Developer (Diki)",
-    template: "%s | Diki Ramadan",
+    default: "Diki Ramadan (dikirmd / diki rmd) - Porto & Web Developer",
+    template: "%s | Diki Ramadan (dikirmd)",
   },
   description:
-    "Diki Ramadan (Diki) - Freelance Web Developer & Full-Stack Developer asal Indonesia. Membangun website modern, responsif, dan cepat menggunakan Next.js, React, dan TypeScript.",
-  applicationName: "Diki Ramadan Portfolio",
+    "Porto Diki Ramadan (dikirmd / diki rmd) - Freelance Web Developer & Full-Stack Developer asal Indonesia. Lihat portfolio / porto Diki Ramadan, proyek web modern, dan jasa pembuatan website.",
+  applicationName: "Porto Diki Ramadan (dikirmd)",
   authors: [{ name: "Diki Ramadan", url: siteUrl }],
   creator: "Diki Ramadan",
   publisher: "Diki Ramadan",
   generator: "Next.js",
   keywords: [
-    "Diki",
     "Diki Ramadan",
-    "Diki Ramadhan",
+    "diki rmd",
     "dikirmd",
+    "porto diki",
+    "porto diki ramadan",
+    "portfolio diki",
+    "portfolio diki ramadan",
+    "diki ramadan portfolio",
+    "porto diki rmd",
+    "dikirmd tech",
     "dikirmdn",
+    "Diki Ramadhan",
     "freelance web developer",
     "freelance web developer Indonesia",
     "web developer freelance",
@@ -53,24 +60,24 @@ export const metadata: Metadata = {
     locale: "id_ID",
     alternateLocale: "en_US",
     url: siteUrl,
-    siteName: "Diki Ramadan - Freelance Web Developer",
-    title: "Diki Ramadan | Freelance Web Developer (Diki)",
+    siteName: "Diki Ramadan (dikirmd) - Porto & Freelance Web Developer",
+    title: "Diki Ramadan (dikirmd / diki rmd) - Porto & Web Developer",
     description:
-      "Portfolio Diki Ramadan - Freelance Web Developer & Full-Stack Developer. Spesialisasi Next.js, React, dan TypeScript untuk website modern dan responsif.",
+      "Porto Diki Ramadan (dikirmd / diki rmd) - Freelance Web Developer & Full-Stack Developer. Spesialisasi Next.js, React, dan TypeScript untuk website modern dan responsif.",
     images: [
       {
         url: "/hero-img.png",
         width: 1200,
         height: 630,
-        alt: "Diki Ramadan - Freelance Web Developer",
+        alt: "Diki Ramadan (dikirmd / diki rmd) - Porto Diki Ramadan",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Diki Ramadan | Freelance Web Developer (Diki)",
+    title: "Diki Ramadan (dikirmd / diki rmd) - Porto & Web Developer",
     description:
-      "Portfolio Diki Ramadan - Freelance Web Developer & Full-Stack Developer.",
+      "Porto Diki Ramadan (dikirmd / diki rmd) - Freelance Web Developer & Full-Stack Developer.",
     images: ["/hero-img.png"],
     creator: "@dikirmdnnn",
   },
@@ -110,12 +117,19 @@ const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Diki Ramadan",
-  alternateName: ["Diki", "Diki Ramadhan", "dikirmd"],
+  alternateName: [
+    "dikirmd",
+    "diki rmd",
+    "Porto Diki",
+    "Porto Diki Ramadan",
+    "Diki Ramadhan",
+    "dikirmdn",
+  ],
   url: siteUrl,
   image: `${siteUrl}/hero-img.png`,
-  jobTitle: "Freelance Web Developer",
+  jobTitle: "Freelance Web Developer & Full-Stack Developer",
   description:
-    "Diki Ramadan adalah Freelance Web Developer dan Full-Stack Developer asal Indonesia yang membangun website modern menggunakan Next.js, React, dan TypeScript.",
+    "Porto Diki Ramadan (dikirmd / diki rmd) - Freelance Web Developer dan Full-Stack Developer asal Indonesia yang membangun website modern menggunakan Next.js, React, dan TypeScript.",
   worksFor: {
     "@type": "Organization",
     name: "Freelance",
@@ -141,8 +155,14 @@ const personJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Diki Ramadan - Freelance Web Developer",
-  alternateName: "Diki Ramadan Portfolio",
+  name: "Diki Ramadan (dikirmd) - Porto & Web Developer",
+  alternateName: [
+    "dikirmd",
+    "diki rmd",
+    "porto diki",
+    "porto diki ramadan",
+    "Porto Diki Ramadan",
+  ],
   url: siteUrl,
   inLanguage: "id-ID",
   author: {
@@ -154,15 +174,29 @@ const websiteJsonLd = {
 const professionalServiceJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Diki Ramadan - Freelance Web Developer",
+  name: "Diki Ramadan (dikirmd / diki rmd) - Freelance Web Developer",
   image: `${siteUrl}/hero-img.png`,
   url: siteUrl,
   description:
-    "Jasa freelance web developer oleh Diki Ramadan. Membangun website modern, responsif, dan cepat dengan Next.js, React, dan TypeScript.",
+    "Jasa freelance web developer oleh Diki Ramadan (dikirmd / diki rmd). Membangun website modern, responsif, dan cepat dengan Next.js, React, dan TypeScript.",
   areaServed: "ID",
   provider: {
     "@type": "Person",
     name: "Diki Ramadan",
+  },
+};
+
+const profilePageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  name: "Porto Diki Ramadan (dikirmd / diki rmd)",
+  url: siteUrl,
+  mainEntity: {
+    "@type": "Person",
+    name: "Diki Ramadan",
+    alternateName: ["dikirmd", "diki rmd", "Porto Diki Ramadan"],
+    identifier: "dikirmd",
+    image: `${siteUrl}/hero-img.png`,
   },
 };
 
@@ -209,6 +243,14 @@ export default function RootLayout({
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(professionalServiceJsonLd),
+          }}
+        />
+        <Script
+          id="ld-profile"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(profilePageJsonLd),
           }}
         />
       </body>

@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Diki Ramadan - Freelance Web Developer",
-    short_name: "Diki Ramadan",
+    name: "Diki Ramadan (dikirmd / diki rmd) - Porto & Web Developer",
+    short_name: "dikirmd",
     description:
-      "Portfolio Diki Ramadan - Freelance Web Developer & Full-Stack Developer.",
+      "Porto Diki Ramadan (dikirmd / diki rmd) - Freelance Web Developer & Full-Stack Developer.",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",
