@@ -232,7 +232,7 @@ export default function Hero() {
               height={820}
               loading="eager"
               fetchPriority="high"
-              className="w-[320px] sm:w-[420px] md:w-[500px] lg:w-[620px] xl:w-[720px] 2xl:w-[820px] max-w-none h-auto object-contain grayscale transition-transform duration-500 group-hover:scale-[1.02] drop-shadow-2xl"
+              className="w-[320px] sm:w-[420px] md:w-[500px] lg:w-[620px] xl:w-[720px] 2xl:w-[820px] max-w-none h-auto object-contain transition-transform duration-500 group-hover:scale-[1.02] drop-shadow-2xl"
             />
           </div>
         </div>
