@@ -13,7 +13,7 @@ export default function Hero() {
   const imageRef = useRef<HTMLDivElement>(null);
   const imageContainerRef = useRef<HTMLDivElement>(null);
   const socialRef = useRef<HTMLDivElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [spotlightPos, setSpotlightPos] = useState({ x: 0, y: 0, isHovered: false });
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -106,19 +106,19 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
-  // Mouse tracking for parallax effect
+  // Mouse tracking for circular color spotlight effect on hero image (laptop+)
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!imageContainerRef.current) return;
+    if (!imageRef.current) return;
 
-    const rect = imageContainerRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
-    const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
+    const rect = imageRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-    setMousePosition({ x: x * 20, y: y * 20 });
+    setSpotlightPos({ x, y, isHovered: true });
   };
 
   const handleMouseLeave = () => {
-    setMousePosition({ x: 0, y: 0 });
+    setSpotlightPos((prev) => ({ ...prev, isHovered: false }));
   };
 
   const socialLinks = [
@@ -218,13 +218,19 @@ export default function Hero() {
         <div
           ref={imageContainerRef}
           className="lg:col-span-6 flex justify-center items-end relative z-30 order-1 lg:order-2 -mt-4 sm:-mt-8 lg:-mt-16 xl:-mt-24 2xl:-mt-28"
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
         >
           <div
             ref={imageRef}
-            className="relative flex justify-center items-end group cursor-pointer"
+            className="relative flex justify-center items-end group cursor-pointer select-none"
+            onMouseMove={handleMouseMove}
+            onMouseEnter={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{
+              WebkitMaskImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 98%)',
+              maskImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 98%)',
+            }}
           >
+            {/* Base Image (Grayscale only on laptop/desktop lg+, colored on mobile/tablet) */}
             <img
               src="/hero-img.png"
               alt="Diki Ramadan - Freelance Web Developer"
@@ -232,8 +238,27 @@ export default function Hero() {
               height={820}
               loading="eager"
               fetchPriority="high"
-              className="w-[320px] sm:w-[420px] md:w-[500px] lg:w-[620px] xl:w-[720px] 2xl:w-[820px] max-w-none h-auto object-contain transition-transform duration-500 group-hover:scale-[1.02] drop-shadow-2xl"
+              className="w-[320px] sm:w-[420px] md:w-[500px] lg:w-[620px] xl:w-[720px] 2xl:w-[820px] max-w-none h-auto object-contain transition-transform duration-500 group-hover:scale-[1.02] drop-shadow-2xl lg:grayscale"
             />
+
+            {/* Spotlight Overlay Image (Reveals full color circle on hover, active on laptop/desktop lg+) */}
+            <div
+              className="hidden lg:block absolute inset-0 pointer-events-none transition-opacity duration-300 overflow-hidden"
+              style={{
+                opacity: spotlightPos.isHovered ? 1 : 0,
+                WebkitMaskImage: `radial-gradient(circle 140px at ${spotlightPos.x}px ${spotlightPos.y}px, black 0%, black 60%, transparent 100%)`,
+                maskImage: `radial-gradient(circle 140px at ${spotlightPos.x}px ${spotlightPos.y}px, black 0%, black 60%, transparent 100%)`,
+              }}
+            >
+              <img
+                src="/hero-img.png"
+                alt=""
+                width={820}
+                height={820}
+                aria-hidden="true"
+                className="w-[320px] sm:w-[420px] md:w-[500px] lg:w-[620px] xl:w-[720px] 2xl:w-[820px] max-w-none h-auto object-contain transition-transform duration-500 group-hover:scale-[1.02] drop-shadow-2xl"
+              />
+            </div>
           </div>
         </div>
 

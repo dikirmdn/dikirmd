@@ -77,8 +77,8 @@ export default function About() {
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-6">
-                <p className="text-sm font-medium text-white/90">Captured in Bandung, 2022</p>
+              <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/70 via-black/30 to-transparent p-6">
+                <p className="text-sm font-medium text-white/90">Captured in Bandung, 2026</p>
               </div>
             </div>
 
