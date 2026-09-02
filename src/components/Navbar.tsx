@@ -50,7 +50,7 @@ export default function Navbar() {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
           {/* Logo - Hidden on Mobile */}
-          <a href={isHome ? '#' : '/'} className="hidden md:block text-2xl font-bold text-gray-800 dark:text-gray-100">
+          <a href={isHome ? '#' : '/'} aria-label="Dikirmd - Porto Diki Ramadan" className="hidden md:block text-2xl font-bold text-gray-800 dark:text-gray-100">
             Dikirmd
           </a>
 
