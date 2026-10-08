@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,39 +17,41 @@ export default function About() {
       gsap.from(card, {
         scrollTrigger: {
           trigger: card,
-          start: 'top 85%',
-          toggleActions: 'play none none reverse',
+          start: "top 85%",
+          toggleActions: "play none none reverse",
         },
         opacity: 0,
         y: 40,
         duration: 0.8,
         delay: index * 0.1,
-        ease: 'power3.out',
+        ease: "power3.out",
       });
     });
   }, []);
 
   const stats = [
-    { value: '3.83', label: 'GPA' },
-    { value: 'Fresh', label: 'Graduate' },
-    { value: '∞', label: 'Curiosity' },
+    { value: "3.83", label: "GPA" },
+    { value: "Fresh", label: "Graduate" },
+    { value: "∞", label: "Curiosity" },
   ];
 
   const highlights = [
     {
-      icon: '◆',
-      title: 'Continuous Learning',
-      description: 'Always exploring new technologies, tools, and ideas to grow.',
+      icon: "◆",
+      title: "Continuous Learning",
+      description:
+        "Always exploring new technologies, tools, and ideas to grow.",
     },
     {
-      icon: '◈',
-      title: 'Team Collaboration',
-      description: 'Believe in teamwork and knowledge sharing for meaningful results.',
+      icon: "◈",
+      title: "Team Collaboration",
+      description:
+        "Believe in teamwork and knowledge sharing for meaningful results.",
     },
     {
-      icon: '◉',
-      title: 'Adaptability',
-      description: 'Open to new challenges and eager to contribute positively.',
+      icon: "◉",
+      title: "Adaptability",
+      description: "Open to new challenges and eager to contribute positively.",
     },
   ];
 
@@ -58,7 +60,11 @@ export default function About() {
   };
 
   return (
-    <section ref={sectionRef} id="about" className="relative min-h-screen px-4 py-24 sm:px-6 sm:py-32">
+    <section
+      ref={sectionRef}
+      id="about"
+      className="relative min-h-screen px-4 py-24 sm:px-6 sm:py-32"
+    >
       <div className="mx-auto max-w-6xl relative z-10">
         <h2 className="mb-12 text-center text-4xl font-bold text-gray-800 dark:text-gray-100 sm:mb-16 sm:text-5xl md:text-6xl">
           About <span className="text-gray-600 dark:text-gray-400">Me</span>
@@ -78,7 +84,9 @@ export default function About() {
                 />
               </div>
               <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/70 via-black/30 to-transparent p-6">
-                <p className="text-sm font-medium text-white/90">Captured in Bandung, 2026</p>
+                <p className="text-sm font-medium text-white/90">
+                  Captured in Bandung, 2026
+                </p>
               </div>
             </div>
 
@@ -108,13 +116,17 @@ export default function About() {
               className="neo-raised rounded-3xl p-6 sm:p-8 md:p-10"
             >
               <span className="neo-flat mb-4 inline-block rounded-full px-4 py-1 text-xs font-medium uppercase tracking-wider text-gray-600 dark:text-gray-400">
-                Diki Ramadan (@dikirmd)
+                Diki Ramadan (@dikirmdnnn)
               </span>
               <h3 className="mb-4 text-2xl font-bold text-gray-800 dark:text-gray-100 sm:text-3xl">
-                Fresh graduate with a passion for growth & web development.
+                Who Am I?
               </h3>
               <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 sm:text-base">
-                I'm Diki Ramadan (known online as dikirmd / diki rmd), a Web Developer passionate about continuous learning and personal growth. I enjoy building modern web applications, exploring new technologies, and collaborating on impactful projects. Welcome to my official portfolio (porto Diki Ramadan).
+                I'm Diki Ramadan (known online as dikirmd / diki rmd), a Web
+                Developer passionate about continuous learning and personal
+                growth. I enjoy building modern web applications, exploring new
+                technologies, and collaborating on impactful projects. Welcome
+                to my official web.
               </p>
             </div>
 

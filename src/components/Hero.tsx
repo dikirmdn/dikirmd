@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { FaGithub, FaInstagram, FaTiktok, FaLinkedin } from 'react-icons/fa6';
-import { ArrowUpRight } from 'lucide-react';
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { FaGithub, FaInstagram, FaTiktok, FaLinkedin } from "react-icons/fa6";
+import { ArrowUpRight } from "lucide-react";
 
 export default function Hero() {
   const badgeRef = useRef<HTMLDivElement>(null);
@@ -13,7 +13,11 @@ export default function Hero() {
   const imageRef = useRef<HTMLDivElement>(null);
   const imageContainerRef = useRef<HTMLDivElement>(null);
   const socialRef = useRef<HTMLDivElement>(null);
-  const [spotlightPos, setSpotlightPos] = useState({ x: 0, y: 0, isHovered: false });
+  const [spotlightPos, setSpotlightPos] = useState({
+    x: 0,
+    y: 0,
+    isHovered: false,
+  });
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -25,9 +29,9 @@ export default function Hero() {
             opacity: 1,
             y: 0,
             duration: 0.8,
-            ease: 'power3.out',
+            ease: "power3.out",
             delay: 0.2,
-          }
+          },
         );
       }
 
@@ -39,9 +43,9 @@ export default function Hero() {
             opacity: 1,
             y: 0,
             duration: 1.2,
-            ease: 'power3.out',
+            ease: "power3.out",
             delay: 0.3,
-          }
+          },
         );
       }
 
@@ -53,9 +57,9 @@ export default function Hero() {
             opacity: 1,
             x: 0,
             duration: 1,
-            ease: 'power3.out',
+            ease: "power3.out",
             delay: 0.5,
-          }
+          },
         );
       }
 
@@ -67,9 +71,9 @@ export default function Hero() {
             opacity: 1,
             x: 0,
             duration: 0.8,
-            ease: 'power3.out',
+            ease: "power3.out",
             delay: 0.7,
-          }
+          },
         );
       }
 
@@ -81,9 +85,9 @@ export default function Hero() {
             opacity: 1,
             y: 0,
             duration: 1.2,
-            ease: 'power3.out',
+            ease: "power3.out",
             delay: 0.4,
-          }
+          },
         );
       }
 
@@ -96,9 +100,9 @@ export default function Hero() {
             x: 0,
             duration: 0.8,
             stagger: 0.1,
-            ease: 'power3.out',
+            ease: "power3.out",
             delay: 0.6,
-          }
+          },
         );
       }
     });
@@ -123,23 +127,23 @@ export default function Hero() {
 
   const socialLinks = [
     {
-      name: 'GitHub',
-      href: 'https://github.com/dikirmdn',
+      name: "GitHub",
+      href: "https://github.com/dikirmdn",
       icon: FaGithub,
     },
     {
-      name: 'Instagram',
-      href: 'https://instagram.com/dikirmdnnn',
+      name: "Instagram",
+      href: "https://instagram.com/dikirmdnnn",
       icon: FaInstagram,
     },
     {
-      name: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/diki-ramadan',
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/diki-ramadan",
       icon: FaLinkedin,
     },
     {
-      name: 'TikTok',
-      href: 'https://tiktok.com/@dkrmdnnn',
+      name: "TikTok",
+      href: "https://tiktok.com/@dkrmdnnn",
       icon: FaTiktok,
     },
   ];
@@ -152,10 +156,10 @@ export default function Hero() {
     >
       {/* SEO-only content, visually hidden but crawlable */}
       <p className="sr-only">
-        Porto Diki Ramadan (dikirmd / diki rmd) - Diki Ramadan adalah seorang Freelance Web Developer dan Full-Stack
-        Developer asal Indonesia. Diki membangun website modern, responsif, dan
-        cepat menggunakan Next.js, React, dan TypeScript. Halaman ini adalah
-        porto resmi Diki Ramadan.
+        Porto Diki Ramadan (dikirmd / diki rmd) - Diki Ramadan adalah seorang
+        Freelance Web Developer dan Full-Stack Developer asal Indonesia. Diki
+        membangun website modern, responsif, dan cepat menggunakan Next.js,
+        React, dan TypeScript. Halaman ini adalah porto resmi Diki Ramadan.
       </p>
       {/* Top Bar / Status Badge Pill */}
       <div className="hidden md:block w-full items-center justify-between mt-12 lg:mb-4 z-10">
@@ -173,13 +177,13 @@ export default function Hero() {
         className="w-full flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 lg:gap-8 mt-0 mb-6 sm:mb-8 lg:mb-12 z-10 select-none px-2"
       >
         <h1
-          style={{ fontSize: 'clamp(3rem, 10.5vw, 9rem)' }}
+          style={{ fontSize: "clamp(3rem, 10.5vw, 9rem)" }}
           className="font-black uppercase tracking-tighter leading-none text-transparent whitespace-nowrap [-webkit-text-stroke:2px_#374151] dark:[-webkit-text-stroke:2px_#e5e7eb] lg:[-webkit-text-stroke:3px_#374151] dark:lg:[-webkit-text-stroke:3px_#e5e7eb]"
         >
           DIKI
         </h1>
         <h1
-          style={{ fontSize: 'clamp(3rem, 10.5vw, 9rem)' }}
+          style={{ fontSize: "clamp(3rem, 10.5vw, 9rem)" }}
           className="font-black uppercase tracking-tighter leading-none whitespace-nowrap text-gray-800 dark:text-gray-100"
         >
           RAMADAN
@@ -192,16 +196,19 @@ export default function Hero() {
         <div className="lg:col-span-3 flex flex-col items-center lg:items-start text-center lg:text-left z-20 order-2 lg:order-1 pb-8 lg:pb-24">
           <div ref={subtitleRef} className="max-w-md ">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 dark:text-gray-100 tracking-tight mb-3">
-              Full-Stack Developer
+              Freelancer
             </h2>
             <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              Crafting clean and functional web experiences with modern technology. Focused on building responsive and user-friendly applications.
+              Crafting clean and functional web experiences with modern
+              technology. Focused on building responsive and user-friendly
+              applications.
             </p>
           </div>
 
-          <div ref={ctaRef} className="flex flex-wrap items-center justify-center lg:justify-start gap-3 w-full sm:w-auto">
-
-
+          <div
+            ref={ctaRef}
+            className="flex flex-wrap items-center justify-center lg:justify-start gap-3 w-full sm:w-auto"
+          >
             <a
               href="/cv.pdf"
               target="_blank"
@@ -226,8 +233,10 @@ export default function Hero() {
             onMouseEnter={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{
-              WebkitMaskImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 98%)',
-              maskImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 98%)',
+              WebkitMaskImage:
+                "linear-gradient(to bottom, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 98%)",
+              maskImage:
+                "linear-gradient(to bottom, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 98%)",
             }}
           >
             {/* Base Image (Grayscale only on laptop/desktop lg+, colored on mobile/tablet) */}
@@ -295,5 +304,3 @@ export default function Hero() {
     </section>
   );
 }
-
-
